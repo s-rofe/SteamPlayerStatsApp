@@ -13,5 +13,12 @@ namespace GamerStatsApp.Controllers
    
         [HttpGet("GetVersion")]
         public ActionResult GetVersion() => Ok("v 0.1.0");
+
+        [HttpGet("GetSteamData/steam_id")]
+
+        public ActionResult GetSteamData()
+        {
+            return Ok();
+        }
     }
 }

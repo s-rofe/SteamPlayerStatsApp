@@ -4,11 +4,10 @@
     {
         private static readonly HttpClient client = new HttpClient();
 
-        public static async Task<string> RetrieveSteamData()
+        public static async Task<string> RetrieveSteamData(string steamKey)
         {
             try
             {
-                var steamKey = "1A15650A96D9BF0C2009DFC25946361E";
                 var steam_id = "76561198093074081";
                 var url = String.Format("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={0}&steamid={1}&format=json", steamKey, steam_id);
                 HttpResponseMessage response = await client.GetAsync(url);
