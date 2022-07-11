@@ -2,18 +2,28 @@
 {
     public class KeyReader
     {
-        private string steamKey { get; set; }
 
-        public void ReadSteamKey()
+        public string ReadSteamKey()
         {
-            string workingDirectory = Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-
+            string projectDirectory = Directory.GetCurrentDirectory();
             string keyFilePath = String.Format(@"{0}\Keys.txt", projectDirectory);
-            string[] lines = System.IO.File.ReadAllLines(keyFilePath);
-            int keyStartIndex = lines[0].IndexOf(": ");
 
-            steamKey = lines[0].Substring(keyStartIndex + 2);
+            // Try to read in the key from Key.txt and return it
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(keyFilePath);
+                int keyStartIndex = lines[0].IndexOf(": ");
+                return lines[0].Substring(keyStartIndex + 2);
+            }
+            // If the file is not found, or another error occurs, return a string explaining the error
+            catch (FileNotFoundException e)
+            {
+                return "Error: Key file does not exist, please ensure Key.txt is set up as specified in README.md";
+            }
+            catch (Exception e) 
+            {
+                return String.Format("\nError: \nMessage :{0} ", e.Message);
+            }
         }
     }
 }
