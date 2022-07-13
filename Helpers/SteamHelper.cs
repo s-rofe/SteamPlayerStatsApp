@@ -30,7 +30,7 @@ namespace GamerStatsApp.Helpers
             }
             catch (Exception e)
             {
-                return String.Format("\nException Caught! \nMessage :{0} ", e.Message);
+                return String.Format("\nPlease check your SteamID is correct, and your profile is public \nMessage :{0} ", e.Message);
             }
 
         }
