@@ -35,13 +35,13 @@ namespace GamerStatsApp.Helpers
 
         }
 
-        public static int GetTotalPlaytime(string steamKey, string steamId) 
+        public static int RetrieveTotalPlaytime(string steamKey, string steamID) 
         {
             int totalPlayTime = 0;
             SteamData data;
-            if (steamId != _currentSteamID)
+            if (steamID != _currentSteamID)
             {
-                data = RetrieveSteamData(steamKey, steamId).Result;
+                data = RetrieveSteamData(steamKey, steamID).Result;
             }
             else
             {
@@ -54,6 +54,21 @@ namespace GamerStatsApp.Helpers
                 totalPlayTime += game.playtime_forever;
             }
             return totalPlayTime;
+        }
+
+        public static int RetrieveTotalGames(string steamKey, string steamID)
+        {
+            SteamData data;
+            if (steamID != _currentSteamID)
+            {
+                data = RetrieveSteamData(steamKey, steamID).Result;
+            }
+            else
+            {
+                data = _currentData;
+            }
+
+            return data.response.game_count;
         }
     }
 }
