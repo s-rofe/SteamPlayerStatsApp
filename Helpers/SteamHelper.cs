@@ -8,9 +8,12 @@ namespace GamerStatsApp.Helpers
     public class SteamHelper
     {
         private static HttpClient client = new HttpClient();
+        private static SteamData currentData;
+        private static string currentSteamId;
 
         public static async Task<dynamic> RetrieveSteamData(string steamKey, string steamId)
         {
+            currentSteamId = steamId;
             try
             {
                 var url = String.Format("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={0}&steamid={1}&format=json", steamKey, steamId);
@@ -18,7 +21,9 @@ namespace GamerStatsApp.Helpers
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
-                dynamic data = JsonSerializer.Deserialize<dynamic>(responseBody);
+                SteamData data = JsonSerializer.Deserialize<SteamData>(responseBody);
+
+                currentData = data;
 
                 return data;
 
@@ -28,6 +33,27 @@ namespace GamerStatsApp.Helpers
                 return String.Format("\nException Caught! \nMessage :{0} ", e.Message);
             }
 
+        }
+
+        public static int GetTotalPlaytime(string steamKey, string steamId) 
+        {
+            int totalPlayTime = 0;
+            SteamData data;
+            if (steamId != currentSteamId)
+            {
+                data = RetrieveSteamData(steamKey, steamId).Result;
+            }
+            else
+            {
+                data = currentData;
+            }
+
+            Game[] games = data.response.games;
+            foreach (Game game in games)
+            {
+                totalPlayTime += game.playtime_forever;
+            }
+            return totalPlayTime;
         }
     }
 }
