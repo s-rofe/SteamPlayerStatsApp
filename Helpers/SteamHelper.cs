@@ -1,9 +1,9 @@
-﻿using GamerStatsApp.Models;
+﻿using SteamPlayerStatsApp.Models;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Text.Json;
 
-namespace GamerStatsApp.Helpers
+namespace SteamPlayerStatsApp.Helpers
 {
     public class SteamHelper
     {

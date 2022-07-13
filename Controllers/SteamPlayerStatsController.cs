@@ -1,17 +1,17 @@
-﻿using GamerStatsApp.Helpers;
+﻿using SteamPlayerStatsApp.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace GamerStatsApp.Controllers
+namespace SteamPlayerStatsApp.Controllers
 {
     [Route("api")]
     [ApiController]
-    public class GamerStatsController : Controller
+    public class SteamPlayerStatsController : Controller
     {
         private readonly KeyReader _keyReader;
         private readonly SteamHelper _steamHelper;
 
-        public GamerStatsController()
+        public SteamPlayerStatsController()
         {
             _keyReader = new KeyReader();
             _steamHelper = new SteamHelper();

@@ -1,4 +1,4 @@
-﻿namespace GamerStatsApp.Helpers
+﻿namespace SteamPlayerStatsApp.Helpers
 {
     public class KeyReader
     {

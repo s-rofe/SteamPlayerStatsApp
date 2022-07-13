@@ -1,4 +1,4 @@
-﻿namespace GamerStatsApp.Models
+﻿namespace SteamPlayerStatsApp.Models
 {
 
     public class SteamData
