@@ -19,7 +19,7 @@ namespace GamerStatsApp.Controllers
 
         // Get the current version of the backend
         [HttpGet("GetVersion")]
-        public ActionResult GetVersion() => Ok("v 0.1.0");
+        public ActionResult GetVersion() => Ok("v 1.0.0");
 
 
         // Get all Steam game and playtime data for a Steam user in minutes
