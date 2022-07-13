@@ -24,7 +24,7 @@ namespace SteamPlayerStatsApp.Controllers
 
         // Get all Steam game and playtime data for a Steam user in minutes
         // Returns a JSON reprosentation
-        [HttpGet("GetSteamData/{steam_id}")]
+        [HttpGet("GetSteamData/{steamID}")]
         public dynamic GetSteamData(string steamID)
         {
             string steamKey = _keyReader.ReadSteamKey();
