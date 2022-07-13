@@ -8,13 +8,13 @@ namespace GamerStatsApp.Controllers
     [ApiController]
     public class GamerStatsController : Controller
     {
-        private readonly KeyReader KeyReader;
-        private readonly SteamHelper SteamHelper;
+        private readonly KeyReader _keyReader;
+        private readonly SteamHelper _steamHelper;
 
         public GamerStatsController()
         {
-            KeyReader = new KeyReader();
-            SteamHelper = new SteamHelper();
+            _keyReader = new KeyReader();
+            _steamHelper = new SteamHelper();
         }
 
         // Get the current version of the backend
@@ -26,9 +26,9 @@ namespace GamerStatsApp.Controllers
         // Returns a JSON reprosentation
         [HttpGet("GetSteamData/{steam_id}")]
 
-        public dynamic GetSteamData(string steamId)
+        public dynamic GetSteamData(string steamID)
         {
-            string steamKey = KeyReader.ReadSteamKey();
+            string steamKey = _keyReader.ReadSteamKey();
             if (steamKey.Contains("Error"))
             {
                 ContentResult r = new ContentResult
@@ -44,7 +44,7 @@ namespace GamerStatsApp.Controllers
             try
             {
 
-                return Ok(SteamHelper.RetrieveSteamData(steamKey, steamId).Result);
+                return Ok(SteamHelper.RetrieveSteamData(steamKey, steamID).Result);
 
 
             }
@@ -61,7 +61,7 @@ namespace GamerStatsApp.Controllers
         
         public ActionResult GetTotalPlayTime(string steamID)
         {
-            string steamKey = KeyReader.ReadSteamKey();
+            string steamKey = _keyReader.ReadSteamKey();
             if (steamKey.Contains("Error"))
             {
                 ContentResult r = new ContentResult
