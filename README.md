@@ -13,7 +13,7 @@ In `Keys.txt` write `Steam Key: {Your Steam API key}` on the first line.
 
 `{Your Steam API key}` should be your access key to Steam API's. 
 
-![Steam Key Example](\Images\ReadMe\KeyFileExample.jpg)
+![Steam Key Example](/Images/ReadMe/KeyFileExample.jpg)
 
 To find out more about Steam API and get an access key click [here](https://steamcommunity.com/dev)
 
@@ -24,7 +24,7 @@ The application can be run from the command line, and API's accessed using Swagg
 
 The application can be run in Visual Studio.
 ## API's
-![Steam Key Example](\Images\ReadMe\SwaggerV1.jpg)
+![Steam Key Example](/Images/ReadMe/SwaggerV1.jpg)
 
 ### GetSteamData
 
@@ -33,7 +33,8 @@ The application can be run in Visual Studio.
 Returns: A JSON reprosentation of the SteamData object that contains the response from the Steam API.
 
 This response includes information about the games in a Steam user's library, including a total count of games and playtimes for various devices.
-![Steam Data Response](\Images\ReadMe\SteamDataResponse.jpg)
+
+![Steam Data Response](/Images/ReadMe/SteamDataResponse.jpg)
 
 ### GetTotalPlayTime
 
